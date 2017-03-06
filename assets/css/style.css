@@ -1,1 +1,49 @@
 
+/*body{
+	background-image: url("../images/alphabet.gif");
+	background-image width: 100%;
+	background-image height: 100%;
+	background-image opacity: 0.3;
+	overflow: auto;
+}*/
+
+#instructions{
+	border-style: solid;
+	border-color: black;
+	background: #ffffff;
+	height: inherit;
+	width: 650px;
+	padding: 10px;
+	left: 200px;
+	float: left;
+}
+
+#headertitle{
+	left: 400px;
+	position: relative;
+}
+
+#targetbox{
+	border-style: solid;
+	border-color: black;
+	width: 200px;
+	font-size: medium;
+	float: left;
+	clear: both;
+}
+
+#randonNum{
+	font-size: 20px;
+}
+
+#scorebox{
+	border-style: solid;
+	border-color: black;
+	width: 200px;
+	font-size: 20px;
+	clear: both;
+}
+
+#score{
+	font-size: 20px;
+}
