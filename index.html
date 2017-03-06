@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Gamey Game Game!</title>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+<script src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>
+
+<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+</head>
+<body>
+
+
+<header>
+	<img src="assets/images/sttitle.jpg" id="headertitle" alt="title" height="150" width="300"/>
+</header>
+
+<div id="instructions">
+	<h2>Save Barb Game</h2>
+	<p>Click Begin and you will be given a random number.</p>
+	<p>Below you will see the all four members of the gang from Stranger Things. Each time you click on a member of the gang you will add a specific number of points to your score.</p>
+	<p>You win the game and save Barb by matching the total score of points to random number given to you at the start of the game. You will lose the game and curse Barb to the creature by going above the random number.</p>
+	<p>The value of each person is hidden from you until you click on them.</p>
+	<p>Each time the game starts, the value for each person will change.</p>
+</div>
+
+<div id="targetbox">
+<button class="btn btn-default btn-lrg begin-button"><span class="glyphicon glyphicon-ok-sign"></span> Begin</button>
+<h3>Target Number: </h3>
+<span id="randomNum"></span>
+</div>
+
+<div id="scorebox">
+<h3>Score: </h3>
+<span id="score"></span>
+</div>
+
+<div id="tally">
+<span id="wins"></span>
+<span id="losses"></span>	
+</div>
+
+<div id="tiles">
+        <img src="assets/images/stwill.jpg" class="tilepics" id="Will" height="200" width="300" />
+        <img src="assets/images/steleven.jpg" class="tilepics" id="Eleven" height="200" width="300"/>
+        <img src="assets/images/stdustin.jpg" class="tilepics" id="Dustin" height="200" Width="300"/>
+        <img src="assets/images/stlucas.jpg" class="tilepics" id="Lucas" height="200" width="300"/>
+      </div>
+
+<script type="text/javascript">
+
+
+var $will = $("#Will");
+var $eleven = $("#Eleven");
+var $lucas = $("#Lucas");
+var $dustin = $("#Dustin");
+var $barb = $("#Barb");
+var score = 0;
+var wins = 0;
+var losses = 0;
+var randomValues = [];
+var currentValue;
+var random;
+
+$(document).ready(function() {
+
+		var numberOne = 0;
+		var numberTwo = 0;
+		var numberThree = 0;
+		var numberFour = 0;
+
+
+      $(".begin-button").on("click", function() {
+        var random = Math.round(Math.random() * 50) + 30;
+        $("#randomNum").html(random);
+        $("#score").html(score);
+
+        while(randomValues.length < 4) {
+    	currentValue = Math.floor(Math.random() * 11) + 1;
+
+    	if(randomValues.indexOf(currentValue) < 0) {
+     	 randomValues.push(currentValue);
+    	};
+      };
+
+      numberOne = (randomValues[0]);
+      numberTwo = (randomValues[1]);
+      numberThree = (randomValues[2]);
+      numberFour = (randomValues[3]);
+});
+
+
+$("#will").on("click", function () {
+	score = score + numberOne;
+	("#score").html(score);
+});
+
+$("#eleven").on("click", function () {
+	score = score + numberTwo.val;
+	("#score").html(score);
+});
+
+$("#lucas").on("click", function () {
+	score = score + numberThree.val;
+	("#score").html(score);
+});
+
+$("#dustin").on("click", function () {
+	score = score + numberFour.val;
+	("#score").html(score);
+});
+
+if (score === random) {
+    wins++;
+    $("#tally").html("<h2>Winner!</h2>");
+    $("#wins").html("<h3>Wins: </h3>" + wins);
+  }
+
+ if (score > random) {
+ 	losses++;
+ 	$("#tally").html("<h2>Sorry Barb!</h2>");
+ 	$("#losses").html("<h3>Losses: </h3>" + losses);
+ }
+});
+
+</script>
+</body>
+</html>
